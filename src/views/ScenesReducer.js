@@ -151,7 +151,24 @@ export default function ScenesReducer(
     }
   };
 
-  staleScenes.forEach(mergeScene);
+let k = null;
+
+let v = null;
+
+staleScenes.forEach(scene => {
+
+let {key} = scene;
+
+k = key;
+
+v = scene;
+
+});
+
+newStaleScenes = k && v ? new Map([[k, v]]) : new Map();
+
+newStaleScenes.forEach(mergeScene);
+
   freshScenes.forEach(mergeScene);
 
   nextScenes.sort(compareScenes);
